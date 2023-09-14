@@ -2,7 +2,7 @@ import './App.css';
 import State from './component/State';
 import Carousal from './component/Carousal';
 import Faq from './component/Faq';
-import Title from './component/Effect';
+import APIData from './component/Effect';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       {/* <State /> */}
       {/* <Carousal /> */}
       {/* <Faq/> */}
-      <Title/>
+      <APIData/>
     </div>
   );
 }
