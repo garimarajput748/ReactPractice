@@ -1,10 +1,11 @@
-import { useState , useEffect } from "react";
+  import { useState , useEffect } from "react";
 
 const APIData = () => {
-    const [data, setData] = useState('posts');
+    const [data, setData] = useState('tags');
     const [items, setItem] = useState([]);
     
     useEffect(() => {
+        console.log(data);
         fetch(`https://blog.vitabletech.in/wp-json/wp/v2/${data}`)
         .then(response => response.json())
         .then((json) => {
@@ -12,7 +13,7 @@ const APIData = () => {
             setItem(json)
           })
         .catch((error) => console.error(error));
-    },[data]);
+    }, [data]);
 
     return(
         <>
@@ -23,15 +24,19 @@ const APIData = () => {
             <button onClick={() => setData('tags')}> Tags </button>
         </div>
         <div>
-        {items.map((item) => (
-          <div key={item.id}>
+        {items?.map((item) => (
+          <div key={item?.id}>
             {data === 'posts' ? (
                 <>
-              <h3><a href={item.link}>{item.title.rendered}</a></h3>
-              <p>{item.excerpt.rendered}</p>
-                </>
+              <h3><a href={item?.link}>{item?.title?.rendered}</a></h3>
+                  <div
+                dangerouslySetInnerHTML={{
+                  __html: item.excerpt?.rendered || "No excerpt",
+                }}
+              />
+              </>
             ) : (
-              <p>{item.name}</p>
+              <p>{item?.name}</p>
             )}
           </div>
         ))}

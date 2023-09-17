@@ -11,8 +11,8 @@ function App() {
       {/* <State /> */}
       {/* <Carousal /> */}
       {/* <Faq/> */}
-      {/* <APIData/> */}
-      <UseEffectAPI/>
+      <APIData/>
+      {/* <UseEffectAPI/> */}
     </div>
   );
 }
